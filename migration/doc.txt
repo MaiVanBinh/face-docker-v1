@@ -1,0 +1,11 @@
+1. When run code in local:
+    Flowing readme.md file
+2. Run code in docker
+    Step 1: Note: Fix path of volume in file docker-compose.yml
+    Step 2: run command: docker-compose up -d.
+    Step 3: create user in docker mongodb 
+    docker exec -it mongodb bash
+    mongo -u mongodbuser -p your_mongodb_root_password (usename and password in file docker-compose.yml - mongo config)
+    use flaskdb (name of db in file docker-compose.yml)
+    db.createUser({user: 'mongodbuser', pwd: 'your_mongodb_root_password', roles: [{role: 'readWrite', db: 'flaskdb'}]}) (usename and password in file docker-compose.yml - flask config)
+    mongo -u mongodbuser -p your_mongodb_password  --authenticationDatabase flaskdb (Check user create success)

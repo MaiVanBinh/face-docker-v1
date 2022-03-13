@@ -56,3 +56,10 @@ class LastestModel(Resource):
 
         return make_common_response(response, status_code=200)
 
+class UpdateLatestModel(Resource):
+    def put(self):
+        try:
+            retrain_service.update_latest_model()
+            return make_common_response({}, 'Update lated model success.', status_code=200)
+        except:
+            return make_common_response({}, 'Update lated model failed.', status_code=400)

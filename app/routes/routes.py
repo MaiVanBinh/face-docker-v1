@@ -1,7 +1,7 @@
 from app.resources.hello import Hello
 from app.resources.person import Person, Persons
 from app.resources.face import RegisterFace, FaceDelete, FaceCount
-from app.resources.retrain import RetrainModel, StatusModel, LastestModel
+from app.resources.retrain import RetrainModel, StatusModel, LastestModel, UpdateLatestModel
 from app.resources.recognize import RecognizeImage, RecognizeImages, RecognizeImageByPath
 
 
@@ -18,7 +18,8 @@ def initialize_routes(api):
     api.add_resource(RetrainModel, '/models/re-train')  # GET
     api.add_resource(StatusModel, '/models/status')  # GET
     api.add_resource(LastestModel, '/models/latest')  # GET
-
+    api.add_resource(UpdateLatestModel, '/models/update-latest-model')  # GET
+    
     api.add_resource(RecognizeImage, '/models/recognize')  # POST
     api.add_resource(RecognizeImages, '/models/recognizes')  # POST
     api.add_resource(RecognizeImageByPath, '/models/recognize-by-path')  # POST

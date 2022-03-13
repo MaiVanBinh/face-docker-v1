@@ -15,7 +15,7 @@ from app.database.mongo import mongo
 from app.services import person_service, face_service
 from app.utils import supporter
 from app.utils.exceptions import LockWhenRetrainingError, TotalFaceTrainLess5Error
-
+from api.application.recognizer_image import reloadModel
 
 def retrain_model():
     """
@@ -237,3 +237,9 @@ def get_old_retrains(id_ignore):
     retrains = list(retrain_col.find(query, select).sort('updated_at', pymongo.DESCENDING))
 
     return retrains
+
+def update_latest_model():
+    """
+    Update latest models
+    """
+    reloadModel()

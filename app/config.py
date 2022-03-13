@@ -32,7 +32,11 @@ class config_db(object):
     DB_CONNECTION = 'mongodb'
 
     # mongo db config default
-    MONGO_URI = os.getenv('MONGO_URI')
+    MODE = os.getenv('MODE')
+    if MODE == "Docker":
+        MONGO_URI = 'mongodb://' + os.environ['MONGODB_USERNAME'] + ':' + os.environ['MONGODB_PASSWORD'] + '@' + os.environ['MONGODB_HOSTNAME'] + ':27017/' + os.environ['MONGODB_DATABASE']
+    else:
+        MONGO_URI = os.getenv('MONGO_URI')
     MONGO_HOST = os.getenv('MONGO_HOST')
     MONGO_PORT = os.getenv('MONGO_PORT')
     MONGO_USERNAME = os.getenv('MONGO_USERNAME')
